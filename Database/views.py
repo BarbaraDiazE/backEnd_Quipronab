@@ -17,11 +17,16 @@ class ServerViews(APIView):
         }
         if form.is_valid():
             form = form.save()
-            return HttpResponse(f'{form}')
+            print(form.common_name)
+            return HttpResponse("holi")
             #return redirect(f"/csv/{filename}/")
         return render(request, "home.html", context=form_dict)
     def get(self, request):
-        return render(request, "home.html")
+        form = GeneralInformationForm(request.POST)
+        form_dict = {
+            "form": form,
+        }
+        return render(request, "home.html", context=form_dict)
 
 class About(APIView):
     def get(self, request):

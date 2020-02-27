@@ -1,7 +1,5 @@
 {% load static %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
 
 <head>
     <title>QUIPRONAB</title>
@@ -18,18 +16,20 @@
     </div>
 </body>
 
-<body>
-    <form method="post"> {% csrf_token %}
+<body> 
+    <form action="" method="post">{% csrf_token %}
     <!--General Information-->
     <div class="card">
         <div class="container">
             <p>
                 <CardTop>General Information</CardTop>
             </p>
-            <p> {{ form.common_name}} </p>
-            <h2card>General Information</h2card>
+            <h2card>
+                {{ form.common_name.label}}
+            </h2card>
+                {{ form.common_name}}
             <p>
-                <div class="buttonSearch">Search</div>
+                <input type="submit"class="buttonSearch" value="Search" />
             </p>
         </div>
     </div>
@@ -57,4 +57,5 @@
             </p>
         </div>
     </div>
+    </form>
 </body>

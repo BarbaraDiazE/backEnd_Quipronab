@@ -30,5 +30,5 @@ def clean_table(cls):
     cls.objects.all().delete()
 
 class GeneralInformation(models.Model):
-    common_name = models.CharField(max_length=500)
+    common_name = models.CharField(max_length=500, verbose_name="common name", help_text='name'  )
 

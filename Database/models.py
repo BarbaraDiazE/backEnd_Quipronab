@@ -1,5 +1,6 @@
 import csv
 
+from django import forms
 from django.db import models
 from django.db.utils import DataError
 
@@ -27,4 +28,7 @@ class NaturalProducts(models.Model):
 @classmethod
 def clean_table(cls):
     cls.objects.all().delete()
+
+class GeneralInformation(models.Model):
+    common_name = models.CharField(max_length=500)
 

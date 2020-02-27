@@ -19,12 +19,14 @@
 </body>
 
 <body>
+    <form method="post"> {% csrf_token %}
     <!--General Information-->
     <div class="card">
         <div class="container">
             <p>
                 <CardTop>General Information</CardTop>
             </p>
+            <p> {{ form.common_name}} </p>
             <h2card>General Information</h2card>
             <p>
                 <div class="buttonSearch">Search</div>

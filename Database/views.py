@@ -47,18 +47,33 @@ class ServerViews(APIView):
                     "autors",
                 )
             )
-            print("result", result[0])
             ids = list(result[0].keys())
             search_values = list()
             for i in ids:
                 search_values.append(result[0][i])
-            print(search_values)
-            print(type(ids), type(search_values))
-            d = np.array([ids, search_values])
+            index_columns = [
+                "ID",
+                "Family",
+                "Specie-1",
+                "Specie-2",
+                "Specie-3",
+                "Specie-4",
+                "Specie-5",
+                "Common name",
+                "SMILES",
+                "ACT-1",
+                "ACT-2",
+                "ACT-3",
+                "ACT-4",
+                "ACT-5",
+                "ACT-6",
+                "ACT-7",
+                "Source",
+                "Autors",
+            ]
+            d = np.array([search_values])
             d = np.transpose(d)
-            data = pd.DataFrame(data=d)
-            # columns = ["ID","Family","Specie-1","Specie-2","Specie-3","Specie-4","Specie-5","Common name","SMILES","ACT-1","ACT-2","ACT-3","ACT-4","ACT-5","ACT-6","ACT-7","Source","Autors"]
-            # print(data.columns)
+            data = pd.DataFrame(data=d, index=index_columns, columns=[" "])
             data = data.to_html()
             return render(request, "search_table.html", context={"data": data})
         return render(request, "home.html", context=form_dict)

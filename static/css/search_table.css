@@ -9,15 +9,23 @@ table {
     align-items: left;
     /*color: darkblue;*/
     }
+th {
+        background-color: #4CAF50;
+        color: white;
+        align-content: center;
+        align-items: left;
+        margin-right: 10px;
+        height: 20px;
+      }
 
-th, td {
+td {
     border-bottom: 1px solid mediumblue;
     padding: 5px;
     align-content: left;
     align-items: left;
     vertical-align: center;
     color: darkblue;
-    height: 50px;
+    height: 20px;
     }
 tr {
     background: #fff7cc;

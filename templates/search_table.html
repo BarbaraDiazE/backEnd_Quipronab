@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Common name</title>
+        <link rel="stylesheet" href= "{% static "css\search_table.css" %}" />
+    </head>
+    <body>
+        <div class="container">
+            <table class="table">
+                    <thead>
+                        <tr>                  
+                            <th>{{data | safe}}</th>
+                        </tr>
+                    </thead>
+            </table>
+    </div>
+    </body>
+</html>

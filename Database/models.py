@@ -41,4 +41,19 @@ class GeneralInformation(models.Model):
     specie = models.CharField(
         max_length=500, verbose_name="specie", help_text="specie", blank=True
     )
+    MW_low = models.IntegerField(verbose_name="MW", help_text="low MW", blank=True)
+    MW_high = models.IntegerField(verbose_name="MW", help_text="high MW", blank=True)
+    LogP_low = models.IntegerField(verbose_name="LogP", help_text="low ", blank=True)
+    LogP_high = models.IntegerField(verbose_name="LogP", help_text="high LogP", blank=True)
+    TPSA_low = models.IntegerField(verbose_name="TPSA", help_text="low TPSA", blank=True)
+    TPSA_high = models.IntegerField(verbose_name="TPSA", help_text="high TPSA", blank=True)
+    Lipinsky_low = models.IntegerField(verbose_name="Lipinsky", help_text="low Lipinsky", blank=True)
+    Lipinsky_high = models.IntegerField(verbose_name="Lipinsky", help_text="high Lipinsky", blank=True)
+    HBA_low = models.IntegerField(verbose_name="HBA", help_text="low HBA", blank=True)
+    HBA_high = models.IntegerField(verbose_name="HBA", help_text="high HBA", blank=True)
+    HBD_low = models.IntegerField(verbose_name="HBD", help_text="low HBD", blank=True)
+    HBD_high = models.IntegerField(verbose_name="HBD", help_text="high HBD", blank=True)
+    RB_low = models.IntegerField(verbose_name="RB", help_text="low RB", blank=True)
+    RB_high = models.IntegerField(verbose_name="RB", help_text="high RB", blank=True)
+    
 

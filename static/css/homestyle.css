@@ -4,6 +4,13 @@ h1{
 h2{
     color:darkslateblue;
   }
+
+.p2{
+  width: 25%;
+  margin: auto;
+  font-family: Helvetica, Helvetica, monospace;
+  display: inline-block;
+}
 .homeTittle{
     background-color: gold;
     color: darkblue;

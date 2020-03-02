@@ -52,13 +52,49 @@
                 </p>
             </div>
         </div>
-        <!--Source-->
+        <!--Chemical information-->
         <div class="card">
             <div class="container">
                 <p>
-                    <CardTop>Sources</CardTop>
+                    <CardTop>Chemical Information</CardTop>
                 </p>
-                <h2card>General Information</h2card>
+                <table>
+                    <tr>
+                      <th>{{ form.MW_low}}</th>
+                      <th><h2card>{{form.MW_low.label}}</h2card></th>
+                      <th>{{ form.MW_high}}</th>
+                    </tr>
+                    <tr>
+                        <th>{{ form.LogP_low}}</th>
+                        <th><h2card>{{form.LogP_low.label}}</h2card></th>
+                        <th>{{ form.LogP_high}}</th>
+                      </tr>
+                      <tr>
+                        <th>{{ form.TPSA_low}}</th>
+                        <th><h2card>{{form.TPSA_low.label}}</h2card></th>
+                        <th>{{ form.TPSA_high}}</th>
+                      </tr>
+                      <tr>
+                        <th>{{ form.Lipinsky_low}}</th>
+                        <th><h2card>{{form.Lipinsky_low.label}}</h2card></th>
+                        <th>{{ form.Lipinsky_high}}</th>
+                      </tr>
+                      <tr>
+                        <th>{{ form.HBA_low}}</th>
+                        <th><h2card>{{form.HBA_low.label}}</h2card></th>
+                        <th>{{ form.HBA_high}}</th>
+                      </tr>
+                      <tr>
+                        <th>{{ form.HBD_low}}</th>
+                        <th><h2card>{{form.HBD_low.label}}</h2card></th>
+                        <th>{{ form.HBD_high}}</th>
+                      </tr>
+                      <tr>
+                        <th>{{ form.RB_low}}</th>
+                        <th><h2card>{{form.RB_low.label}}</h2card></th>
+                        <th>{{ form.RB_high}}</th>
+                      </tr>
+                  </table>                  
                 <p>
                     <input type="submit" class="buttonSearch" value="Search" />
                 </p>

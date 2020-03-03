@@ -5,15 +5,23 @@ from Database.models import GeneralInformation
 class GeneralInformationForm(forms.ModelForm):
     class Meta:
         model = GeneralInformation
-        fields = ("common_name", "family", "specie", "MW_low", "MW_high", "LogP_low", "LogP_high", "TPSA_low", 
-                    "TPSA_high",  
-                    "Lipinsky_low",  
-                    "Lipinsky_high",  
-                    "HBA_low", 
-                    "HBA_high", 
-                    "HBD_low", 
-                    "HBD_high", 
-                    "RB_low", 
-                    "RB_high" 
-                        )
+        fields = (
+            "common_name",
+            "family",
+            "specie",
+            "mw_low",
+            "mw_high",
+            "logp_low",
+            "logp_high",
+            "tpsa_low",
+            "tpsa_high",
+            "lipinsky_low",
+            "lipinsky_high",
+            "hba_low",
+            "hba_high",
+            "hbd_low",
+            "hbd_high",
+            "rb_low",
+            "rb_high",
+        )
 

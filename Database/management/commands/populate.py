@@ -11,7 +11,7 @@ class Command(BaseCommand):
         for row in data:
             try:
                 NaturalProducts.objects.create(
-                                    ID          = row['ID'],
+                                    ID          = ro'ID'],
                                     family      = row['Family'], 
                                     specie_1    = row['Specie-1'],
                                     specie_2    = row['Specie-2'],
@@ -29,8 +29,15 @@ class Command(BaseCommand):
                                     act_7       = row['ACT-7'],
                                     source      = row['Source'],
                                     autors      = row['Autors'],
+                                    mw          = row['MW'],
+                                    hba         = row['HBD'],
+                                    hbd         = row['HBD'],
+                                    tpsa        = row['TPSA'],
+                                    rb          = row['RB'],
+                                    logp        = row['iLOGP'],
+                                    fsp3        = row['Fraction Csp3'],
+                                    lipinsky    = row['Lipinski violations']
                                             )
                 self.stdout.write('Table populated')
             except KeyError as e:
                     print(e)
-

@@ -59,54 +59,77 @@
                     <CardTop>Chemical Information</CardTop>
                 </p>
                 <table>
-                    <tr>
-                        <th>{{ form.mw_low}}</th>
+                    <tr><!--MW-->
+                        <th>{{ form.mw_lt}}</th>
+                        <th><h2card> ≤ </h2card></th>
                         <th>
-                            <h2card>{{form.mw_low.label}}</h2card>
+                            <h2card>{{form.mw_lt.label}}</h2card>
                         </th>
-                        <th>{{ form.mw_high}}</th>
+                        <th><h2card> ≤ </h2card>
+                        <th>{{ form.mw_gt}}</th>
                     </tr>
-                    <tr>
-                        <th>{{ form.logp_low}}</th>
+                    <tr><!--HBA-->
+                        <th>{{ form.hba_lt}}</th>
+                        <th><h2card> ≤ </h2card></th>
                         <th>
-                            <h2card>{{form.logp_low.label}}</h2card>
+                            <h2card>{{form.hba_lt.label}}</h2card>
                         </th>
-                        <th>{{ form.logp_high}}</th>
+                        <th><h2card> ≤ </h2card>
+                        <th>{{ form.hba_gt}}</th>
                     </tr>
-                    <tr>
-                        <th>{{ form.tpsa_low}}</th>
+                    <tr><!--HBD-->
+                        <th>{{ form.hbd_lt}}</th>
+                        <th><h2card> ≤ </h2card></th>
                         <th>
-                            <h2card>{{form.tpsa_low.label}}</h2card>
+                            <h2card>{{form.hbd_lt.label}}</h2card>
                         </th>
-                        <th>{{ form.tpsa_high}}</th>
+                        <th><h2card> ≤ </h2card>
+                        <th>{{ form.hbd_gt}}</th>
                     </tr>
-                    <tr>
-                        <th>{{ form.lipinsky_low}}</th>
+                    <tr><!--TPSA-->
+                        <th>{{ form.tpsa_lt}}</th>
+                        <th><h2card> ≤ </h2card></th>
                         <th>
-                            <h2card>{{form.lipinsky_low.label}}</h2card>
+                            <h2card>{{form.tpsa_lt.label}}</h2card>
                         </th>
-                        <th>{{ form.lipinsky_high}}</th>
+                        <th><h2card> ≤ </h2card>
+                        <th>{{ form.tpsa_gt}}</th>
                     </tr>
-                    <tr>
-                        <th>{{ form.hba_low}}</th>
+                    <tr><!--RB-->
+                        <th>{{ form.rb_lt}}</th>
+                        <th><h2card> ≤ </h2card></th>
                         <th>
-                            <h2card>{{form.HBA_low.label}}</h2card>
+                            <h2card>{{form.rb_lt.label}}</h2card>
                         </th>
-                        <th>{{ form.hba_high}}</th>
+                        <th><h2card> ≤ </h2card>
+                        <th>{{ form.rb_gt}}</th>
                     </tr>
-                    <tr>
-                        <th>{{ form.hbd_low}}</th>
+                    <tr><!--logp-->
+                        <th>{{ form.logp_lt}}</th>
+                        <th><h2card> ≤ </h2card></th>
                         <th>
-                            <h2card>{{form.hbd_low.label}}</h2card>
+                            <h2card>{{form.logp_lt.label}}</h2card>
                         </th>
-                        <th>{{ form.hbd_high}}</th>
+                        <th><h2card> ≤ </h2card>
+                        <th>{{ form.logp_gt}}</th>
                     </tr>
-                    <tr>
-                        <th>{{ form.rb_low}}</th>
+                    <tr><!--fsp3-->
+                        <th>{{ form.fsp3_lt}}</th>
+                        <th><h2card> ≤ </h2card></th>
                         <th>
-                            <h2card>{{form.rb_low.label}}</h2card>
+                            <h2card>{{form.fsp3_lt.label}}</h2card>
                         </th>
-                        <th>{{ form.rb_high}}</th>
+                        <th><h2card> ≤ </h2card>
+                        <th>{{ form.fsp3_gt}}</th>
+                    </tr>
+                    <tr><!--lipinsky-->
+                        <th>{{ form.lipinsky_lt}}</th>
+                        <th><h2card> ≤ </h2card></th>
+                        <th>
+                            <h2card>{{form.lipinsky_lt.label}}</h2card>
+                        </th>
+                        <th><h2card> ≤ </h2card>
+                        <th>{{ form.lipinsky_gt}}</th>
                     </tr>
                 </table>
                 <p>

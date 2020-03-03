@@ -92,9 +92,23 @@ def get_family(family, specie):
             "Autors"]).set_index("ID")
     return data
 
-def get_chemical_information(mw_low, mw_hight):
-    #Entry.objects.exclude(pub_date__gt=datetime.date(2005, 1, 3)).exclude(headline='Hello')
-    result = NaturalProducts.objects.exclude(mw_low > mw_low).exclude(mw_hight < mw_low).all().values()
-    data = pd.DataFrame([[1,2,2],["a","b","c"]])
-    print(result)
+def get_chemical_information(form):
+    result = NaturalProducts.objects.exclude(mw__lt=form.mw_lt).exclude(mw__gt=form.mw_gt)
+    result = result.exclude(hba__lt=form.hba_lt).exclude(hba__gt=form.hba_gt)
+    #hbd
+    result = result.exclude(hbd__lt=form.hba_lt).exclude(hbd__gt=form.hba_gt)
+    #tpsa
+    result = result.exclude(tpsa__lt=form.tpsa_lt).exclude(tpsa__gt=form.tpsa_gt)
+    #rb
+    result = result.exclude(rb__lt=form.rb_lt).exclude(rb__gt=form.rb_gt)
+    #logp
+    result = result.exclude(logp__lt=form.logp_lt).exclude(logp__gt=form.logp_gt)
+    #fsp3
+    result = result.exclude(fsp3__lt=form.fsp3_lt).exclude(fsp3__gt=form.fsp3_gt)
+    #lipinsky
+    result = result.exclude(lipinsky__lt=form.lipinsky_lt).exclude(lipinsky__gt=form.lipinsky_gt)
+    result = result.values("ID", "family", "specie_1", "mw", "hba", "hbd", "tpsa", "rb", "logp", "fsp3", "lipinsky")
+    search_values = list(map(lambda x: result[x].values(), range(len(result))))
+    data = pd.DataFrame(data=search_values, columns = ["ID", "Family", "Specie_1", "mw", "hba", "hbd", "tpsa", "rb", "logp", "fsp3", "lipinsky" ]).set_index("ID")
     return data
+    

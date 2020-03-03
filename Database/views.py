@@ -20,17 +20,16 @@ class ServerViews(APIView):
             common_name = form.common_name
             family = form.family
             specie = form.specie
-            mw_low = form.mw_low
-            mw_high = form.mw_high
-            print(common_name, family, specie)
+            mw_lt = form.mw_lt
             if common_name:
                 data = get_common_name(common_name)
             elif family:
                 data = get_family(family, specie)
-            elif mw_low:
-                data = get_chemical_information(mw_low, mw_high)
+            elif mw_lt:
+                print("mw", mw_lt)
+                data = get_chemical_information(form)
             return render(request, "search_table.html", context={"data": data.to_html()})
-        return render(request, "home.html", context={"form": form} )
+        return render(request, "home.html", context={"form": form})
 
     def get(self, request):
         form = GeneralInformationForm(request.POST)
@@ -39,8 +38,6 @@ class ServerViews(APIView):
         }
         return render(request, "home.html", context=form_dict)
 
-
 class About(APIView):
     def get(self, request):
         return render(request, "about.html")
-

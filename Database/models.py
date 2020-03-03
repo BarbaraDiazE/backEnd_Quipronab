@@ -41,8 +41,8 @@ class GeneralInformation(models.Model):
     specie = models.CharField(
         max_length=500, verbose_name="specie", help_text="specie", blank=True
     )
-    MW_low = models.IntegerField(verbose_name="MW", help_text="low MW", blank=True)
-    MW_high = models.IntegerField(verbose_name="MW", help_text="high MW", blank=True)
+    mw_low = models.IntegerField(verbose_name="MW", help_text="low MW", blank=True)
+    mw_high = models.IntegerField(verbose_name="MW", help_text="high MW", blank=True)
     LogP_low = models.IntegerField(verbose_name="LogP", help_text="low ", blank=True)
     LogP_high = models.IntegerField(verbose_name="LogP", help_text="high LogP", blank=True)
     TPSA_low = models.IntegerField(verbose_name="TPSA", help_text="low TPSA", blank=True)

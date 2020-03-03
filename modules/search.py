@@ -91,3 +91,10 @@ def get_family(family, specie):
             "Source",
             "Autors"]).set_index("ID")
     return data
+
+def get_chemical_information(mw_low, mw_hight):
+    #Entry.objects.exclude(pub_date__gt=datetime.date(2005, 1, 3)).exclude(headline='Hello')
+    result = NaturalProducts.objects.exclude(mw_low > mw_low).exclude(mw_hight < mw_low).all().values()
+    data = pd.DataFrame([[1,2,2],["a","b","c"]])
+    print(result)
+    return data

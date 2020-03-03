@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from rest_framework.views import APIView
 from Database.forms import GeneralInformationForm
-from modules.search import get_common_name, get_family
+from modules.search import *
 
 # Create your views here.
 
@@ -20,11 +20,15 @@ class ServerViews(APIView):
             common_name = form.common_name
             family = form.family
             specie = form.specie
+            mw_low = form.mw_low
+            mw_high = form.mw_high
             print(common_name, family, specie)
             if common_name:
                 data = get_common_name(common_name)
             elif family:
                 data = get_family(family, specie)
+            elif mw_low:
+                data = get_chemical_information(mw_low, mw_high)
             return render(request, "search_table.html", context={"data": data.to_html()})
         return render(request, "home.html", context={"form": form} )
 

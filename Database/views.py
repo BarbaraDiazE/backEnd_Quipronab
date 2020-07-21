@@ -35,6 +35,7 @@ class ServerViews(APIView):
                 data = get_chemical_information(form)
             elif smiles:
                 data = get_common_name("engeletina")
+
             return render(
                 request, "search_table.html", context={"data": data.to_html()}
             )
@@ -58,8 +59,17 @@ class drawer(APIView):
         if request.method == "POST":
             smile = request.POST.get("smile")
             print(smile)
+            print("SMILES: ", smile)
+            if type(smile) is None:
+                print("soy None")
+            else:
+                data = get_similar_compounds(smile)
+                print(data)
+            # return render(
+            #     request, "search_table.html", context={"data": data.to_html()}
+            # )
 
-        return render(request, "JSME.html")
+        return HttpResponse("ya cargo los smiles")
 
     def get(self, request):
         return render(request, "JSME.html")

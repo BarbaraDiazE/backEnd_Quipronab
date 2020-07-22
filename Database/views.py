@@ -1,4 +1,6 @@
-import os, glob, csv
+import os
+import glob
+import csv
 import pandas as pd
 
 # import numpy as np
@@ -56,20 +58,12 @@ class About(APIView):
 
 class drawer(APIView):
     def post(self, request):
-        if request.method == "POST":
-            smile = request.POST.get("smile")
-            print(smile)
-            print("SMILES: ", smile)
-            if type(smile) is None:
-                print("soy None")
-            else:
-                data = get_similar_compounds(smile)
-                print(data)
-            # return render(
-            #     request, "search_table.html", context={"data": data.to_html()}
-            # )
-
-        return HttpResponse("ya cargo los smiles")
+        smile = request.POST.get("smile")
+        print("SMILES: ", smile)
+        data = get_similar_compounds(smile)
+        return render(
+            request, "search_table.html", context={"data": data.to_html()}
+        )
 
     def get(self, request):
         return render(request, "JSME.html")

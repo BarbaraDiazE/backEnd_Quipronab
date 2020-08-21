@@ -1,5 +1,5 @@
 from django import forms
-from Database.models import GeneralInformation
+from Database.models import GeneralInformation, SmilesModel
 
 
 class GeneralInformationForm(forms.ModelForm):
@@ -27,3 +27,11 @@ class GeneralInformationForm(forms.ModelForm):
             "lipinsky_gt",
             "smiles",
         )
+
+
+class SmilesModelForm(forms.ModelForm):
+    class Meta:
+        model = SmilesModel
+        fields = ["smiles"]
+        # widgets = {
+        # 'smiles': forms.TextInput(attrs = {'class':'form-control',}),

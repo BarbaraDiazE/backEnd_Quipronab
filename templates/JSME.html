@@ -1,68 +1,66 @@
-{% load static %} {% load staticfiles %}
-
+{% load static %}
+{% load staticfiles %}
+{% csrf_token %}
 <head>
   <title>QUIPRONAB</title>
   <link
     rel="stylesheet"
     type="text/css"
     href="{% static 'css\homestyle.css' %}"
-  />
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    />
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script type="text/javascript"
+    language="javascript" src="/static/js/jquery-3.2.1.min.js"></script> -->
   <script
     type="text/javascript"
     language="javascript"
-    src="/static/js/JSME/jsme/jsme.nocache.js"
-  ></script>
-
+    src="/static/js/JSME/jsme/jsme.nocache.js"></script>
   <script>
     function jsmeOnLoad() {
       jsmeApplet = new JSApplet.JSME("jsme_container", "500px", "520px", {
         //optional parameters
         options: "query,hydrogens",
       });
-
       document.JME = jsmeApplet;
     }
-
+    
     function getSmiles() {
-      var data_smiles = document.JME.smiles();
-      document.getElementById("jsme_output").value = data_smiles;
+		  var data = document.JME.smiles();
+		  document.getElementById("jme_output").value = data;
     }
   </script>
 </head>
 
 <body>
-  <h2 class="homeTittle">QUIPRONAB</h2>
-  <div class="topnav">
-    <a class="active" href="#home">Home</a>
-    <a href="#news">Search</a>
-    <a href="#contact">Download</a>
-    <a href="/about">About</a>
-  </div>
-</body>
-
-<body>
-  <form action="" method="post">
-    {% csrf_token %}
-    <script>
+  <!-- <form action="" method="post">
+    {% csrf_token %} -->
+  <script>
       $(document).ready(function () {
-        $(".buttonSearch").click(function (e) {
-          e.preventDefault();
-          const smile = jsmeApplet.smiles();
+        $(".buttonSearch").click(function () {
+          // e.preventDefault();
+          const csrfToken = $('[name = csrfmiddlewaretoken]').val();
+          const smiles = jsmeApplet.smiles();
           $.ajax({
-            url: "/drawer/",
+            url: "/ajaxsaved/",
+            data : {"smiles": smiles, "csrfmiddlewaretoken": csrfToken},
             type: "POST",
-            data: "&smile=" + smile,
+            success: function (data) {
+                  $("#error-list").html(
+                    '<p style="color:brown">Esta es la respuesta del succes</p>'
+                  );
+                  console.log(data);
+                },
           });
         });
       });
     </script>
-
-    <div id="jsme_container">
-      <label for="jsme_container"> Draw a molecule</label>
-    </div>
-
-    <input type="submit" class="buttonSearch" value="Search" />
+  <form method="post">
+    <!-- {% csrf_token %} -->
+    <div id="jsme_container"></div>
+    <input type="button" class="buttonSearch" value="Search">
   </form>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
 </body>

@@ -2,15 +2,21 @@ import os
 import glob
 import csv
 import pandas as pd
+import numpy as np
 
 # import numpy as np
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
-
-from rest_framework.views import APIView
-from Database.forms import GeneralInformationForm
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView, View
+from Database.forms import GeneralInformationForm, SmilesModelForm
 from modules.search import *
+
+from django.views.generic import DetailView
+
+from django.utils.decorators import method_decorator
+from rest_framework.decorators import api_view
 
 # Create your views here.
 
@@ -56,14 +62,46 @@ class About(APIView):
         return render(request, "about.html")
 
 
-class drawer(APIView):
-    def post(self, request):
-        smile = request.POST.get("smile")
-        print("SMILES: ", smile)
-        data = get_similar_compounds(smile)
-        return render(
-            request, "search_table.html", context={"data": data.to_html()}
-        )
+# class Drawer(APIView):
+#     def post(self, request):
+#         smiles = request.POST.get("smiles")
+#         # s = request.POST.get("smiles")
+#         print("smiles:", smiles)
+#         if smiles != None:
+#             # print("SMILES: ", smiles)
+#             # data = get_similar_compounds(smiles)
+#             # return render(
+#             #     request, "search_table.html", context={"data": data.to_html()}
+#             # )
+#             #
+#             return HttpResponse("no estoy fallando")
+#         else:
+#             return HttpResponse("estoy fallando")
+#         # print(type(smiles))
+#         # return render(request, "JSME.html")
 
-    def get(self, request):
+#     def get(self, request):
+#         return render(request, "JSME.html")
+
+
+def drawer(request):
+    if request.POST:
+        print("post request")  # return HttpResponse("post homepage")
+        # return render(request, "homepage", context)
+        return HttpResponse("post request")
+    else:
+        print("homepage request")
         return render(request, "JSME.html")
+
+
+def hola(request):
+    if request.POST:
+        smiles = request.POST["smiles"]
+        return render(request, "JSME.html")
+
+
+def ajaxsave(request):
+    smiles = request.POST["smiles"]
+    print(smiles)
+    print("soy la funcion ajax")
+    return JsonResponse({"smiles": smiles})

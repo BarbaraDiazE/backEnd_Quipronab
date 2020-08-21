@@ -107,3 +107,7 @@ class GeneralInformation(models.Model):
         verbose_name="smiles", max_length=100, blank=True, null=True
     )
 
+
+class SmilesModel(models.Model):
+    smiles = models.CharField(max_length=100, blank=True, null=True)
+

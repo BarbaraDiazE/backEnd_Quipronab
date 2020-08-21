@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 
-from Database.views import ServerViews, About, drawer
+from Database.views import ServerViews, About, drawer, hola, ajaxsave
 
 urlpatterns = [
     url(r"^$", ServerViews.as_view(), name="home page"),
     url(r"about/", About.as_view(), name="about"),
     path("admin/", admin.site.urls),
-    path("drawer/", drawer.as_view(), name="drawer"),
+    # path("drawer2/", drawer2, name="drawer2"),
+    path("drawer/smiles/", drawer, name="drawer"),
+    # path("hola/", hola, name="hola"),
+    path("ajaxsaved/", ajaxsave, name="ajaxsaved"),
 ]

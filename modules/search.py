@@ -182,9 +182,9 @@ def get_similar_compounds(smiles):
             # "source",
             # "autors",
         )
-        print(result)
+        # print(result)
         search_values = list(map(lambda x: result[x].values(), range(len(result))))
-        print(search_values)
+        # print(search_values)
         data = pd.DataFrame(
             data=search_values,
             columns=[
@@ -204,6 +204,7 @@ def get_similar_compounds(smiles):
         final_data = final_data.append(data)
 
     final_data = final_data.set_index("ID")
+    print("compounds:", final_data.shape[0])
     # print("FINAL DATA")
     # print(final_data)
     return final_data

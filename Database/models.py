@@ -104,7 +104,7 @@ class GeneralInformation(models.Model):
         verbose_name="Lipinsky", help_text="gt Lipinsky", blank=True, null=True
     )
     smiles = models.CharField(
-        verbose_name="smiles", max_length=100, blank=True, null=True
+        verbose_name="smiles", max_length=100, blank=False, null=True
     )
 
 

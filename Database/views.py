@@ -102,6 +102,5 @@ def hola(request):
 
 def ajaxsave(request):
     smiles = request.POST["smiles"]
-    print(smiles)
-    print("soy la funcion ajax")
-    return JsonResponse({"smiles": smiles})
+    data = get_similar_compounds(smiles)
+    return JsonResponse({"smiles": smiles, "similarCompoundsTable": data.to_html()})

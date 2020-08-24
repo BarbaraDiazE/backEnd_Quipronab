@@ -1,5 +1,4 @@
-{% load static %}
-{% load staticfiles %}
+{% load static %} {% comment %} {% load staticfiles %} {% endcomment %} 
 {% csrf_token %}
 <head>
   <title>QUIPRONAB</title>
@@ -7,15 +6,15 @@
     rel="stylesheet"
     type="text/css"
     href="{% static 'css\homestyle.css' %}"
-    />
-  <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- <script type="text/javascript"
     language="javascript" src="/static/js/jquery-3.2.1.min.js"></script> -->
   <script
     type="text/javascript"
     language="javascript"
-    src="/static/js/JSME/jsme/jsme.nocache.js"></script>
+    src="/static/js/JSME/jsme/jsme.nocache.js"
+  ></script>
   <script>
     function jsmeOnLoad() {
       jsmeApplet = new JSApplet.JSME("jsme_container", "500px", "520px", {
@@ -24,10 +23,10 @@
       });
       document.JME = jsmeApplet;
     }
-    
+
     function getSmiles() {
-		  var data = document.JME.smiles();
-		  document.getElementById("jme_output").value = data;
+      var data = document.JME.smiles();
+      document.getElementById("jme_output").value = data;
     }
   </script>
 </head>
@@ -36,31 +35,40 @@
   <!-- <form action="" method="post">
     {% csrf_token %} -->
   <script>
-      $(document).ready(function () {
-        $(".buttonSearch").click(function () {
-          // e.preventDefault();
-          const csrfToken = $('[name = csrfmiddlewaretoken]').val();
-          const smiles = jsmeApplet.smiles();
-          $.ajax({
-            url: "/ajaxsaved/",
-            data : {"smiles": smiles, "csrfmiddlewaretoken": csrfToken},
-            type: "POST",
-            success: function (data) {
-                  $("#error-list").html(
-                    '<p style="color:brown">Esta es la respuesta del succes</p>'
-                  );
-                  console.log(data);
-                },
-          });
+    $(document).ready(function () {
+      $(".buttonSearch").click(function () {
+        // e.preventDefault();
+        const csrfToken = $("[name = csrfmiddlewaretoken]").val();
+        const smiles = jsmeApplet.smiles();
+        $.ajax({
+          url: "/ajaxsaved/",
+          data: { smiles: smiles, csrfmiddlewaretoken: csrfToken },
+          type: "POST",
+          success: function (data) {
+            $("#error-list").html(
+              '<p style="color:brown">Esta es la respuesta del succes</p>'
+            );
+            console.log('success handler')
+            console.log(data);
+
+            if (data.similarCompoundsTable) {
+              $('#similarCompoundsTable').replaceWith(data.similarCompoundsTable)
+            }
+          },
         });
       });
-    </script>
+    });
+  </script>
   <form method="post">
     <!-- {% csrf_token %} -->
     <div id="jsme_container"></div>
-    <input type="button" class="buttonSearch" value="Search">
+    <input type="button" class="buttonSearch" value="Search" />
   </form>
   <script
     src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"
+  ></script>
+
+  <div id='similarCompoundsTable'></div>
 </body>
